@@ -32,3 +32,7 @@ bazel test //test:agent_test
 ./scripts/build_and_test.sh
 ```
 
+# experience 
+- 使用 trea自动模式开发，感觉和Claude code的使用体验差距很大
+- 流行的模型需要排队
+

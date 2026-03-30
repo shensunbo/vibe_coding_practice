@@ -1,4 +1,6 @@
 #include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 /**
  * @brief Main function for the 2D fighting game
@@ -13,6 +15,39 @@
  */
 int main() {
     std::cout << "Starting 2D Fighting Game..." << std::endl;
+    std::cout << "================================" << std::endl;
+    
+    // Initialize GLFW
+    if (!glfwInit()) {
+        std::cerr << "Failed to initialize GLFW" << std::endl;
+        return -1;
+    }
+    std::cout << "GLFW initialized successfully" << std::endl;
+    
+    // Create a window
+    GLFWwindow* window = glfwCreateWindow(800, 600, "2D Fighting Game", NULL, NULL);
+    if (!window) {
+        std::cerr << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+    std::cout << "GLFW window created successfully" << std::endl;
+    
+    // Make the window's context current
+    glfwMakeContextCurrent(window);
+    
+    // Initialize GLEW
+    if (glewInit() != GLEW_OK) {
+        std::cerr << "Failed to initialize GLEW" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+    std::cout << "GLEW initialized successfully" << std::endl;
+    
+    // Get OpenGL version
+    const GLubyte* version = glGetString(GL_VERSION);
+    std::cout << "OpenGL version: " << version << std::endl;
+    
     std::cout << "================================" << std::endl;
     std::cout << "Game Framework Initialized" << std::endl;
     std::cout << "================================" << std::endl;
@@ -63,6 +98,11 @@ int main() {
     } else {
         std::cout << "Exiting game..." << std::endl;
     }
+    
+    // Cleanup
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    std::cout << "GLFW terminated successfully" << std::endl;
     
     std::cout << "\nGame ended." << std::endl;
     return 0;
