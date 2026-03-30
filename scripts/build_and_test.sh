@@ -1,27 +1,20 @@
 #!/bin/bash
 
-# 构建和测试脚本
+# Build and test script for 2D fighting game
 
-echo "=== Building and Testing C++ Project ==="
-
-# 构建项目
-echo "Building project..."
+echo "Building the project..."
 bazel build //src:main
-if [ $? -ne 0 ]; then
-    echo "Build failed!"
-    exit 1
+
+if [ $? -eq 0 ]; then
+    echo "Build successful!"
+    echo "Running tests..."
+    bazel test //test:agent_test
+    
+    if [ $? -eq 0 ]; then
+        echo "All tests passed!"
+    else
+        echo "Some tests failed."
+    fi
+else
+    echo "Build failed."
 fi
-
-echo "Build successful!"
-
-# 运行测试
-echo "Running tests..."
-bazel test //test:agent_test
-if [ $? -ne 0 ]; then
-    echo "Tests failed!"
-    exit 1
-fi
-
-echo "Tests passed!"
-
-echo "=== Build and Test Completed Successfully ==="

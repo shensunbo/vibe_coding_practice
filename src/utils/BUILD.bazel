@@ -1,0 +1,12 @@
+# Bazel BUILD file for utils library
+
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "utils",
+    srcs = glob(["*.cpp"], allow_empty = True),
+    hdrs = glob(["*.h"], allow_empty = True),
+    includes = ["src"],
+)

@@ -1,16 +1,53 @@
-# Bazel BUILD file for the root directory
+# Bazel build file for 2D fighting game
 
-# Load necessary rules
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+# Common flags and includes
+cc_library(
+    name = "common",
+    srcs = [],
+    hdrs = [],
+    includes = ["src"],
+    visibility = ["//src:__pkg__", "//test:__pkg__"],
+)
 
-# Main project structure
-package(default_visibility = ["//visibility:public"])
+# Main executable
+cc_binary(
+    name = "main",
+    srcs = ["src/main.cc"],
+    deps = [
+        "//src/game",
+        "//src/utils",
+        "@glfw//:glfw",
+        "@glew//:glew",
+    ],
+)
 
-# Include subdirectories
-exports_files(["WORKSPACE"])
+# Game library
+define_module("game", "src/game")
 
-# Define common test dependencies
-TEST_DEPS = [
-    "@com_google_googletest//:gtest_main",
-    "@com_google_googletest//:gtest",
-]
+# Utils library
+define_module("utils", "src/utils")
+
+# Test suite
+cc_test(
+    name = "agent_test",
+    srcs = ["test/agent_test.cc"],
+    deps = [
+        "//src/game",
+        "//src/utils",
+        "@gtest//:gtest",
+        "@gtest//:gtest_main",
+    ],
+)
+
+def define_module(name, path):
+    cc_library(
+        name = name,
+        srcs = glob([path + "/*.cpp"]),
+        hdrs = glob([path + "/*.h"]),
+        includes = ["src"],
+        deps = [
+            "@glfw//:glfw",
+            "@glew//:glew",
+        ],
+        visibility = ["//src:__pkg__", "//test:__pkg__"],
+    )

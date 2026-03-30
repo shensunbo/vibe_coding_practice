@@ -1,12 +1,17 @@
 # Bazel BUILD file for source code
 
-load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 package(default_visibility = ["//visibility:public"])
 
+# Main executable
 cc_binary(
     name = "main",
     srcs = ["main.cc"],
+    deps = [
+        "//src/game:game",
+        "//src/utils:utils",
+    ],
     linkopts = [
         "-lglfw",
         "-lGLEW",
@@ -15,4 +20,3 @@ cc_binary(
         "-lGLU",
     ],
 )
-
