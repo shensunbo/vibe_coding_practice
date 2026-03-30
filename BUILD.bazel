@@ -1,0 +1,16 @@
+# Bazel BUILD file for the root directory
+
+# Load necessary rules
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+
+# Main project structure
+package(default_visibility = ["//visibility:public"])
+
+# Include subdirectories
+exports_files(["WORKSPACE"])
+
+# Define common test dependencies
+TEST_DEPS = [
+    "@com_google_googletest//:gtest_main",
+    "@com_google_googletest//:gtest",
+]

@@ -1,0 +1,15 @@
+# Bazel BUILD file for tests
+
+load("@rules_cc//cc:defs.bzl", "cc_test")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_test(
+    name = "agent_test",
+    srcs = ["agent_test.cc"],
+    deps = [
+        "@googletest//:gtest_main",
+        "@googletest//:gtest",
+    ],
+)
+
