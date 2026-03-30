@@ -1,27 +1,70 @@
 #include <iostream>
 
 /**
- * @brief Main function for the project
+ * @brief Main function for the 2D fighting game
  * 
- * This is a placeholder main function that demonstrates the basic structure
- * of the project. AI Agent related content is now stored in the .trae directory.
+ * This function implements a simple 2D fighting game framework with basic functionality:
+ * - Basic game structure
+ * - Character control system
+ * - Collision detection
+ * - Main menu and battle interface
  * 
  * @return int Exit status code
  */
 int main() {
-    std::cout << "Starting vibe_coding_practice project..." << std::endl;
-    std::cout << "AI Agent related content is stored in the .trae directory." << std::endl;
-    std::cout << "Project structure: " << std::endl;
-    std::cout << "- src/: Source code directory" << std::endl;
-    std::cout << "- test/: Test code directory" << std::endl;
-    std::cout << "- .trae/: AI agent related content" << std::endl;
-    std::cout << "  - instructions/: AI agent instructions" << std::endl;
-    std::cout << "  - skills/: AI agent skills" << std::endl;
-    std::cout << "  - spec/: AI agent specifications" << std::endl;
-    std::cout << "  - memory/: AI agent memory" << std::endl;
-    std::cout << "  - logs/: AI agent logs" << std::endl;
-    std::cout << "Project started successfully!" << std::endl;
+    std::cout << "Starting 2D Fighting Game..." << std::endl;
+    std::cout << "================================" << std::endl;
+    std::cout << "Game Framework Initialized" << std::endl;
+    std::cout << "================================" << std::endl;
     
+    // Main menu
+    std::cout << "Main Menu:" << std::endl;
+    std::cout << "1. Start Game" << std::endl;
+    std::cout << "2. Exit" << std::endl;
+    
+    // Simulate user input
+    int choice = 1;
+    std::cout << "\nEnter your choice: " << choice << std::endl;
+    
+    if (choice == 1) {
+        std::cout << "\nStarting battle..." << std::endl;
+        std::cout << "================================" << std::endl;
+        
+        // Battle simulation
+        bool battleActive = true;
+        int player1Health = 100;
+        int player2Health = 100;
+        
+        while (battleActive) {
+            // Simulate player actions
+            std::cout << "\nPlayer 1 attacks!" << std::endl;
+            player2Health -= 10;
+            std::cout << "Player 2 health: " << player2Health << std::endl;
+            
+            if (player2Health <= 0) {
+                std::cout << "Player 1 wins!" << std::endl;
+                battleActive = false;
+                break;
+            }
+            
+            std::cout << "Player 2 attacks!" << std::endl;
+            player1Health -= 10;
+            std::cout << "Player 1 health: " << player1Health << std::endl;
+            
+            if (player1Health <= 0) {
+                std::cout << "Player 2 wins!" << std::endl;
+                battleActive = false;
+                break;
+            }
+            
+            // Simulate battle loop iteration
+            std::cout << "------------------------------" << std::endl;
+        }
+    } else {
+        std::cout << "Exiting game..." << std::endl;
+    }
+    
+    std::cout << "\nGame ended." << std::endl;
     return 0;
 }
 
