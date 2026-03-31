@@ -8,12 +8,10 @@ This is a C++ project framework designed for AI Agent development with TDD (Test
 ### Project Structure
 - `src/`: Source code directory
 - `test/`: Test code directory
-- `.trae/`: Trea IDE recognized directory for AI agent related content
-  - `instructions/`: AI agent instructions
-  - `skills/`: AI agent skills
-  - `spec/`: AI agent specifications
-  - `memory/`: AI agent memory
-  - `logs/`: AI agent logs
+- `.github/`: GitHub project metadata and Copilot guidance
+  - `copilot-instructions.md`: repository-level instructions for GitHub Copilot
+  - `instructions/`: supplemental instruction documents
+- `.trae/`: legacy Trae IDE content kept for backward compatibility
 - `scripts/`: Build and test scripts
 
 ### Build System
@@ -36,3 +34,10 @@ bazel test //test:agent_test
 - 使用 trea自动模式开发，感觉和Claude code的使用体验差距很大
 - 流行的模型需要排队
 
+## Copilot Project Compatibility
+
+This repository now includes GitHub Copilot project instructions under:
+
+- `.github/copilot-instructions.md`
+
+If you are using GitHub Copilot coding agent features, keep project-specific guidance in `.github/` to ensure the agent can load and follow it consistently.
