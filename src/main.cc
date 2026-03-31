@@ -3,17 +3,13 @@
 #include "game/Game.h"
 
 int main() {
-    Game game;
-    
-    // Initialize game
+    game::Game game;
+
     if (!game.initialize()) {
         return -1;
     }
 
-    // Run game
     game.run();
-
-    // Shutdown will be called automatically by the destructor
 
     return 0;
 }

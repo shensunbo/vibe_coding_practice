@@ -33,6 +33,13 @@ bazel test //test:agent_test
 # experience 
 - 使用 trea自动模式开发，感觉和Claude code的使用体验差距很大
 - 流行的模型需要排队
+## copilot 
+- 不写注释
+- 不按照要求使用TDD开发，直接写代码
+- 无法解决glfw， glad等依赖，反复删除添加，需要人工解决
+- 不写测试，从始至终使用一个测试文件
+- 类结构不合理
+- need rework, this must be fixed 
 
 ## Copilot Project Compatibility
 

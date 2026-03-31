@@ -8,8 +8,8 @@ cc_test(
     name = "agent_test",
     srcs = ["agent_test.cc"],
     deps = [
-        "@googletest//:gtest_main",
+        "//src/game:game",
         "@googletest//:gtest",
+        "@googletest//:gtest_main",
     ],
 )
-

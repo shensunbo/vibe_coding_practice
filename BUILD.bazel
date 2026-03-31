@@ -17,7 +17,6 @@ cc_binary(
         "//src/game",
         "//src/utils",
         "@glfw//:glfw",
-        "@glew//:glew",
     ],
 )
 
@@ -45,9 +44,6 @@ def define_module(name, path):
         srcs = glob([path + "/*.cpp"]),
         hdrs = glob([path + "/*.h"]),
         includes = ["src"],
-        deps = [
-            "@glfw//:glfw",
-            "@glew//:glew",
-        ],
+        deps = ["@glfw//:glfw"],
         visibility = ["//src:__pkg__", "//test:__pkg__"],
     )

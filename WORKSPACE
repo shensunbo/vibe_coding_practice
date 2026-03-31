@@ -8,13 +8,16 @@ http_archive(
     name = "glfw",
     strip_prefix = "glfw-3.3.8",
     urls = ["https://github.com/glfw/glfw/archive/refs/tags/3.3.8.tar.gz"],
-)
+    build_file_content = """
+package(default_visibility = ["//visibility:public"])
 
-# GLEW
-http_archive(
-    name = "glew",
-    strip_prefix = "glew-2.2.0",
-    urls = ["https://github.com/nigels-com/glew/archive/refs/tags/glew-2.2.0.tar.gz"],
+cc_library(
+    name = "glfw",
+    hdrs = glob(["include/GLFW/*.h"]),
+    includes = ["include"],
+    linkopts = ["-lglfw"],
+)
+""",
 )
 
 # Google Test

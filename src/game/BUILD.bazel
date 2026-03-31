@@ -1,0 +1,24 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "game",
+    srcs = [
+        "Attack.cpp",
+        "Character.cpp",
+        "Game.cpp",
+    ],
+    hdrs = [
+        "Attack.h",
+        "Character.h",
+        "Game.h",
+    ],
+    includes = [".."],
+    deps = ["@glfw//:glfw"],
+    linkopts = [
+        "-lGL",
+        "-lX11",
+        "-lGLU",
+    ],
+)
